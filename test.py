@@ -1,0 +1,21 @@
+import requests
+import base64
+
+
+# params ={
+#     "baseImg": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAACACAAAAAB47zm3AAAFCklEQVR4AdXBf6zVdR3H8efre77nXPDCvWVF685a/vjDJdNYAZuscrXlH2jklWXdzavGvXCh+KGwhFrzj8rQDFHscuFeAkowGKOaBuZkZdEK29rKTHOs2Wal4Rb3yuX+OOd8Xx0O/djq4o/V+4/P4yGTNpm0yaRNJm0yaZNJm0zaZNImkzaZtMmkTSZtMmmTSZtM2mSibbrwOuLIBDu1s7KMODLBjv1kxnLiyAT7/tOXzrmQMDKxio1zn1ownzAysfzVlf2zFxJGJtjeRU+8dLOIIhNszw0v7NmQEUUm2FDP8JbPZ0SRCTbYO7z1dhFFJtb4kYWjhxcTRibWyODaycOLCCMTa/iBDdlQD2FkYv360O3ZjiWEkYl1MFukoR7CyMS6+4qr+d7CMlFkYt111XwOXt1KFJlY9y6Yx8bl7USRCVU8fvHFxVdWtRNFJlR9x43Tizu730UUmVD17cvx0Jz3E0UmVv8K/Gj9GqLIxHrkGnjsD31EkYk10AdHj64nikyse1aXOfaj9USRCXW6f3WZYz9dRxSZUE8+35nzu6cXiyAyob49sUT8+TcfzQgiE2o3N8HE3u4SQWQieVdLFzDQWyKITKTavvfMAQZ6SwSRiVS9b3UZGOwlikykYvNtNDx8LVFkQn33OhoOdhJFJtRAH+DNtxJFJtTWpSWo3r+WKDKR/vhkZwmq9/e0E0Qm0i+OrgNqP+iYSxCZSI/9aj3gB1s+QRCZQN477XoadqubIDKBiju7LqLhW/VbCCIT6e5l7TQcOt2ZEUPmjSqqlWd0qWjY/eKSt4hXsWdxCw2/P9aVE0PmDTjRXtpSq7TUxoqJDTncVykmWnszzm2ohzOKe1eViSHzuh148WRb7kUX1JzRj6XaGl44MLa2wrlMPnQTTZtW5cSQeV3qJR5+9oPza3m1zFnVMrUc+Drdb86Z2vC2z9H0zU8TRObVWEZUy3xjwvWr5jGVzeSjy9pl0WTEPx3ftyHjjP4VBJGZ2jbNGM59slRrKZVqdbTGiHM4veW88VJ2/o0c//HIil2vVFYWu972cRq+40+Khvr23pwYMlPb3/bLyTlvPXH9c2+aVeOvo5eI1/DbwzNKwx0vT8zsPKA6LH4HsHHehzmjePDy91KQQS2HIuMfrKJwmSrK+TeLs6pZidci8/9SyyfzjIZquZZ/qfhiRrH9fXNpuuvKD5zYoWmQ3bzzZNtE1/iRlz/y7odOTa9M8xhL909Mjszk2lnTKb3E279cqn1sdomRtmcO5VcsKI/QmtVzLKYkE+LU4Gcq1Lf3lGnamXdtLn/20dkdA6PnrWTbK2rreLalsnRk9/Se+ibP6qqc/tlfxk9lWbVtBN2270/5pMu17PzLfq6i5rx45/MZExd0Fxn/RSaEv1b9Agz2ctbx/WuGVtFkgZ3xL4UQTU98CAsLRt0qGsaKVurjtOTF2N/25+U+8Z9kYjz1w3Ww6VbRVBsY6/hUxv+kyJiCTIzqVi0/8lxfmaZiY/UOQshEeeDKozNvIZpMlHuy0mrCyYS5o31NRjSZOEVGOJm0yaRNJm0yaZNJm0zaZNImkzaZtMmkTSZtMmmTSZtM2mTSJpM2mbTJpE0mbTJpk0mbTNpk0iaTNpm0yaRNJm0yaZNJm0zaZNImkzaZtMmkTSZtMmmTSZtM2mTSJpM2mbTJpE0mbTJpk0mbTNpk0iaTNpm0yaRNJm0yaZNJm0zaZNL2d27N4hCpVhcqAAAAAElFTkSuQmCC",
+# }
+
+# Load the image file and encode it in base64
+with open("C:/Users/User/Desktop/RT/rt-app/test/Normal.png", "rb") as image_file:
+    base64_image = base64.b64encode(image_file.read()).decode("utf-8")
+
+params = {
+    "baseImg": f"data:image/png;base64,{base64_image}",
+}
+
+try:
+    r = requests.post("http://127.0.0.1:5000/predictResult", params=params, timeout=5000)
+    print(r)
+except Exception as e:
+    print(e)
